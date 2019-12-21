@@ -14,7 +14,11 @@ type Methods = 'FlightInfoExResult' | string
 type FlightAwareResponse<T> = Record<string, T>
 
 export default class FlightAware {
-  constructor(private username: string, private apiKey: string) {}
+  constructor(private username: string, private apiKey: string) {
+    if (username == null || apiKey == null) {
+      throw new Error(`Authorization not set: username: ${username} apiKey: ${apiKey}`)
+    }
+  }
 
   public async flightInfo(ident: string): Promise<FlightInfoExResult | null> {
     return this.apiCall<FlightInfoExResult>('FlightInfoEx', { ident })
@@ -44,6 +48,7 @@ export default class FlightAware {
         if (res.ok) {
           return res.json() as PromiseLike<FlightAwareResponse<T>>
         } else {
+          console.log(res.statusText)
           return null
         }
       })
