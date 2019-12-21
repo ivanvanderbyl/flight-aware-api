@@ -8,6 +8,7 @@
     "start": "node index.js",
     "build:watch": "tsc -w",
     "dev": "ts-node ./index.ts",
+    "prepublishOnly": "yarn build",
     "debug": "ts-node --inspect-brk ./index.ts"
   },
   "devDependencies": {
@@ -21,7 +22,11 @@
     "mocha": "^6.2.2",
     "nodemon": "^1.19.4",
     "query-string": "^6.9.0",
+    "rxjs": "^6.5.3",
     "ts-node": "^8.5.2",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.3"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0"
   }
 }

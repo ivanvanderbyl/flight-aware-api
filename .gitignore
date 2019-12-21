@@ -3,3 +3,6 @@ node_modules
 /dist
 /tmp
 *.log
+examples/.env
+airlines.json
+all-airlines.json
